@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Thomas on 2017/4/4.
  */
 public class BinWeatherDB {
-    public static final String DB_NAME = 'bin_weather';
+    public static final String DB_NAME = "bin_weather";
     public static final int VERSION = 1;
     private static BinWeatherDB binWeatherDB;
     private SQLiteDatabase db;
@@ -38,7 +38,7 @@ public class BinWeatherDB {
             ContentValues values = new ContentValues();
             values.put("province_name", province.getProvinceName());
             values.put("province_code", province.getProvinceCode());
-            db.insert("Province", null, values)
+            db.insert("Province", null, values);
         }
     }
 
@@ -63,7 +63,7 @@ public class BinWeatherDB {
     }
 
     //获取省份、城市、县城信息
-    public List<Province> loadProvince(){
+    public List<Province> loadProvinces(){
         List<Province> list = new ArrayList<Province>();
         Cursor cursor = db.query("Province", null, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
@@ -78,9 +78,11 @@ public class BinWeatherDB {
         return list;
     }
 
-    public List<City> loadCity(){
+    public List<City> loadCities(int provinceId){
         List<City> list = new ArrayList<City>();
-        Cursor cursor = db.query("City", null, null, null, null, null, null);
+        Cursor cursor = db.query("City", null, "province_id = ?", new String[] {String.valueOf
+                (provinceId)
+        }, null, null, null);
         if (cursor.moveToFirst()){
             do{
                 City city = new City();
@@ -94,9 +96,10 @@ public class BinWeatherDB {
         return list;
     }
 
-    public List<County> LoadCounty(){
+    public List<County> LoadCounties(int cityId){
         List<County> list = new ArrayList<County>();
-        Cursor cursor = db.query("County",null, null, null, null, null, null);
+        Cursor cursor = db.query("County", null, "city_id = ?", new String[] {String.valueOf
+                (cityId)}, null, null, null);
         if (cursor.moveToFirst()){
             do {
                 County county = new County();
