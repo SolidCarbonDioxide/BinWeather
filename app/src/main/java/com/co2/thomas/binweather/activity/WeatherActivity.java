@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.co2.thomas.binweather.R;
+import com.co2.thomas.binweather.service.AutoUpdateService;
 import com.co2.thomas.binweather.util.HttpCallbackListener;
 import com.co2.thomas.binweather.util.HttpUtil;
 import com.co2.thomas.binweather.util.Utility;
@@ -141,5 +142,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         currentDateText.setText(prefs.getString("current_date", ""));
         weatherInfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
