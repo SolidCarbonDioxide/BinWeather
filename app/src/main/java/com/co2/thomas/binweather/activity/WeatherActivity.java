@@ -138,7 +138,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         temp1Text.setText(prefs.getString("temp1", ""));
         temp2Text.setText(prefs.getString("temp2", ""));
         weatherDespText.setText(prefs.getString("weather_desp", ""));
-        publishText.setText(prefs.getString("publishText", ""));
+        publishText.setText(prefs.getString("publish_time", ""));
         currentDateText.setText(prefs.getString("current_date", ""));
         weatherInfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);

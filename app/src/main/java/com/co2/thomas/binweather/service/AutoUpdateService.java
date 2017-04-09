@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 
+import com.co2.thomas.binweather.receiver.AutoUpdateReceiver;
 import com.co2.thomas.binweather.util.HttpCallbackListener;
 import com.co2.thomas.binweather.util.HttpUtil;
 import com.co2.thomas.binweather.util.Utility;
